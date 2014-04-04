@@ -1,7 +1,23 @@
+#include "fixed-point-iter.h"
+#include <math.h>
 
 
-
-void fixed_point_step(double* jin, double* jout, double* zprev, double dt){
+/**
+ * carry out a fixed point step, part of a loop to compute the new 
+ * configuration
+ * 
+ * this uses the midpoint spin method described in the Mclaclahn paper,
+ * the RK coeffs are not explicitly defined but they enter as the (1/2) in the final jout loop
+ * 
+ * \todo abstract the coeffs to butcher tables as in the gauss-collocation methods
+ * 
+ * @param jin (13 elt array) initial spin config (input)
+ * @param jout (" ") next spin config (output)
+ * @param zpred (" ") array used in the previous step of this iterative procedure
+ * @param dt time step width 
+ */
+void fixed_point_step(double* jin, double* jout, double* zprev, double dt)
+{
   double tdvec[13];
   double tdnorms[4];
   double tvec[13];
@@ -40,15 +56,28 @@ void fixed_point_step(double* jin, double* jout, double* zprev, double dt){
   
 }
 
-void fixed_point_iterate(double* jin, double* jnext, double dt){
-  int stepMax = 16;
-  double eps = 1e-12;
+/**
+ * computes a fixed midpoint method update step using the procedure designed for spin systems
+ * 
+ * @param jin (input) initial spin config
+ * @param jnext (output) computed new spin config
+ * @param dt time step width 
+ */
+void fixed_point_iterate(double* jin, double* jnext, double dt)
+{
+  /* loop here silently stops after this many attempts */
+  int stepMax = 16; 
+  /* minimal discrepancy, Harirer et al suggest something a little bigger than DOUBLE_EPS, see gauss-collocation.c */
+  double eps = 1e-12; 
   int nstep = 0;
   double zin[13];
   double znext[13];
   double diff = 1;
   int i;
 
+  /* initiate the fixed point search with the stupidest guess, (totally zero)
+   * it would be more sensible to use the znext obtained in the last step 
+   */
   for(i = 1; i< 13; i++)
     zin[i] = 0.0;
   
@@ -59,12 +88,15 @@ void fixed_point_iterate(double* jin, double* jnext, double dt){
     diff = 0.0;
     for(i = 1; i < 13; i++){
       diff += sqrt(pow(zin[i] - znext[i], 2)); /* compute the difference between steps*/
+      /* is it any faster to do this using *(zin+i) = *(znext + i)? */
       zin[i] = znext[i]; /* and copy the array bits around */
     }
     nstep++;
   }
   
   for(i = 1; i < 13; i++){
-    jnext[i] = 2*znext[i] + jin[i];
+    /* this two here is the butcher C_12 coeff (i think)
+     */
+    jnext[i] = 2.0*znext[i] + jin[i];
   }
 }
