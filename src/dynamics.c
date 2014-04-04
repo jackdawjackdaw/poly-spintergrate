@@ -40,6 +40,23 @@ void get_eom_full(double* j, double* j_eom)
 }
 
 /** 
+ * compute the hamiltonian in the 54 coords, using the scalings 
+ */
+double ham_54(double alpha, double beta, double gamma, double wvol)
+{
+  return( (sqrt(2.0)/3.0) * ( sqrt( fabs(alpha*beta*gamma))
+                              - sqrt(fabs( (alpha-1)*(beta-1)*(gamma-1))) ) * sqrt(fabs(wvol)));
+}
+
+/* wrap ham_54 to give the vol from a j list */
+double get_volume(double* j)
+{
+  double alpha = 0.0, beta = 0.0, gamma = 0.0, wvol = 0.0;
+  get_scalings(j, &alpha, &beta, &gamma, &wvol);
+  return(ham_54(alpha, beta, gamma, wvol));
+}
+
+/** 
  * compute the canonical scalings from a given spin config
  * 
  */
@@ -51,6 +68,17 @@ void get_scalings(double* j, double* alpha, double* beta, double* gamma, double*
   *beta = wijk(j,1,3,4)/ denom;
   *gamma = -1.0*wijk(j,1,2,4)/denom;
   *wvol = denom;
+}
+
+/**
+ * compute the norms of the spins for debugging
+ */
+void get_norms(double*j, double* norms) 
+{
+  int i;
+  for(i = 0; i < 4; i++){
+    norms[i] = sqrt(pow(j[(i)*3+1],2) + pow(j[(i)*3+2],2)+ pow(j[(i)*3+3],2));
+  }
 }
 
 /**
