@@ -1,6 +1,7 @@
 poly-spintertgrate {#mainpage}
 =========
-C.Coleman-Smith (cec24@phy.duke.edu)
+C.Coleman-Smith (cec24@phy.duke.edu) (code)
+H.Haggard (all the hard bits)
 
 Routines for integrating the classical spin dynamics of the pentahedron.
 
@@ -20,9 +21,10 @@ is the component is
 
     ToExportForm[thing_] :=  thing /.  {Subscript[J, i_, j_] -> Subscript[J, (i - 1)*3 + j]}   /. {Subscript[J, i_] -> J[[i]]}
 
-Due to my inability to hold the evaluation of J[[i]] properly it's not possible to start the J arrays from zero
+Due to my inability to hold the evaluation of J[[i]] properly it's not possible to start the J arrays from
+zero. Currently the C routines that pass J vectors around are all of length 13 and indexed from 1. 
 
-Here is an example of splicing in the 54 equations of motion
+Here is an example of splicing in the 54 equations of motion (in mathematica do)
 
     fileName = "/path/to/this/project/src/dynamics-eom-54.mc";
     Splice[fileName];
