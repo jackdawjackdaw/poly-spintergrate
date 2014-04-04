@@ -1,4 +1,5 @@
 #include "fixed-point-iter.h"
+#include "dynamics.h"
 #include <math.h>
 
 

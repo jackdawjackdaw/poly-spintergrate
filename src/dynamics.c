@@ -1,6 +1,7 @@
 #include <math.h>
 #include "mdefs.h"
 
+#include "dynamics.h"
 #include "dynamics-eom-54.h"
 
 /**
@@ -48,7 +49,7 @@ void get_scalings(double* j, double* alpha, double* beta, double* gamma, double*
   
   *alpha = -1.0*wijk(j,2,3,4) / denom;
   *beta = wijk(j,1,3,4)/ denom;
-  *gamma = wijk(j,1,2,4)/denom;
+  *gamma = -1.0*wijk(j,1,2,4)/denom;
   *wvol = denom;
 }
 
@@ -67,11 +68,15 @@ double wijk(double *jvec, int i, int j, int k)
   int count;
 
   for(count = 0; count < 3; count++){
-    j_vec_i[count] = jvec[3*i+count+1];
-    j_vec_j[count] = jvec[3*j+count+1];
-    j_vec_k[count] = jvec[3*k+count+1];
+    j_vec_i[count] = jvec[3*(i-1)+count+1];
+    j_vec_j[count] = jvec[3*(j-1)+count+1];
+    j_vec_k[count] = jvec[3*(k-1)+count+1];
   }
 
+  /* printf("%lf %lf %lf\n", j_vec_i[0], j_vec_i[1], j_vec_i[2]); */
+  /* printf("%lf %lf %lf\n", j_vec_j[0], j_vec_j[1], j_vec_j[2]); */
+  /* printf("%lf %lf %lf\n", j_vec_k[0], j_vec_k[1], j_vec_k[2]); */
+  
   return(  -1*j_vec_i[2] * j_vec_j[1] * j_vec_k[0] 
            + j_vec_i[1] * j_vec_j[2] * j_vec_k[0] 
            + j_vec_i[2] * j_vec_j[0] * j_vec_k[1]

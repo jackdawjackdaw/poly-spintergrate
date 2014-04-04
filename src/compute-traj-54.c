@@ -23,12 +23,11 @@ int main(int argc, char * argv[]){
   int i;
   double jin;
   double jvec[13]; // mm references vectors from 1 not zero...
-  double j_eom_vec[13];
   double j_next_vec[13]; // do one fixedPointSeep
   double zprev[13];
   double time = 0.0;
   double dt = 0.01;
-  double alpha, beta, gamma, wvol;
+  double alpha = 0.0, beta = 0.0, gamma = 0.0, wvol = 0.0;
   int print_interval = 4;
   int nstep = 1;
   int count = 0;
@@ -42,9 +41,9 @@ int main(int argc, char * argv[]){
     zprev[i] = 0.0; // init this at the same time
   }
   printf("\n");
-
+  
   get_scalings(jvec, &alpha, &beta, &gamma, &wvol);
-  printf("# scalings: %lf %lf %lf %lf\n");
+  printf("# scalings: %lf %lf %lf %lf\n", alpha, beta, gamma, wvol);
 
   while(count < nstep){
     fixed_point_iterate(jvec, j_next_vec, dt);
