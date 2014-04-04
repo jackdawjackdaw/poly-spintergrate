@@ -8,6 +8,14 @@
 
 
 /**
+ * ccs, cec24@phy.duke.edu
+ * 04.04.2014
+ * 
+ * integrate the 54 system, reads an initial config from stdin and then
+ * goes ahead and chugs away using the fixed point midpoint update scheme
+ */
+ 
+/**
  * the spins are indexed from 1-12 so we have to 
  * alloc a 13 length array
  */
@@ -20,8 +28,9 @@ int main(int argc, char * argv[]){
   double zprev[13];
   double time = 0.0;
   double dt = 0.01;
+  double alpha, beta, gamma, wvol;
   int print_interval = 4;
-  int nstep = 10the 000;
+  int nstep = 1;
   int count = 0;
 
   printf("0.0 ");
@@ -34,6 +43,8 @@ int main(int argc, char * argv[]){
   }
   printf("\n");
 
+  get_scalings(jvec, &alpha, &beta, &gamma, &wvol);
+  printf("# scalings: %lf %lf %lf %lf\n");
 
   while(count < nstep){
     fixed_point_iterate(jvec, j_next_vec, dt);
