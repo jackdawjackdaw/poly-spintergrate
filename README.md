@@ -38,3 +38,10 @@ Now you can build the C code in the usual cmake way, from a terminal in the root
 
 This will create all the project binaries and by default installs them into the project-root/bin folder. 
 
+## Examples
+
+Running `traj-54` with the input config `test-norm.txt` should produce stable and well behaved output for very
+long times, although so far I've not tested it further than t=1000 with dt=0.01.
+
+The input config `test-norm-bad.txt` seems to choke (probably due to a boundary crossing) at about t=5,
+confirmed with dt = 0.01 and dt=0.0001.

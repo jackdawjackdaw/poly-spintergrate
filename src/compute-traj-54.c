@@ -30,7 +30,7 @@ int main(int argc, char * argv[]){
   double dt = 0.01;
   double alpha = 0.0, beta = 0.0, gamma = 0.0, wvol = 0.0;
   int print_interval = 4;
-  int nstep = 100000;
+  int nstep = 50000;
   int count = 0;
 
   printf("0.0 ");
