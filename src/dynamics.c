@@ -19,8 +19,9 @@
  * @return j_eom <- f(j), entries 1..12 are populated
  */
 void get_eom_full(double* j, double* j_eom)
+{
   /** 
-   * this is ugly, use a fnptr array here
+   * this is ugly, in the future we want to use a fnptr array here, one for each config class
    * but at least its unrolled..
    */
   j_eom[1] = eom_rhs_54_1(j);
@@ -37,3 +38,44 @@ void get_eom_full(double* j, double* j_eom)
   j_eom[12] = eom_rhs_54_12(j);        
 }
 
+/** 
+ * compute the canonical scalings from a given spin config
+ * 
+ */
+void get_scalings(double* j, double* alpha, double* beta, double* gamma, double* wvol)
+{
+  double denom = wijk(j,1,2,3);
+  
+  *alpha = -1.0*wijk(j,2,3,4) / denom;
+  *beta = wijk(j,1,3,4)/ denom;
+  *gamma = wijk(j,1,2,4)/denom;
+  *wvol = denom;
+}
+
+/**
+ * compute wijk from the given set of spins
+ * 
+ * wijk = J_i . J_j \cross J_k
+ *
+ * a.b \cross c = -a2 b1 c0 + a1 b2 c0 + a2 b0 c1 - a0 b2 c1 - a1 b0 c2 + a0 b1 c2
+ */
+double wijk(double *jvec, int i, int j, int k)
+{
+  double j_vec_i[3];
+  double j_vec_j[3];
+  double j_vec_k[3];
+  int count;
+
+  for(count = 0; count < 3; count++){
+    j_vec_i[count] = jvec[3*i+count+1];
+    j_vec_j[count] = jvec[3*j+count+1];
+    j_vec_k[count] = jvec[3*k+count+1];
+  }
+
+  return(  -1*j_vec_i[2] * j_vec_j[1] * j_vec_k[0] 
+           + j_vec_i[1] * j_vec_j[2] * j_vec_k[0] 
+           + j_vec_i[2] * j_vec_j[0] * j_vec_k[1]
+           - j_vec_i[0] * j_vec_j[2] * j_vec_k[1]
+           - j_vec_i[1] * j_vec_j[0] * j_vec_k[2]
+           + j_vec_i[0] * j_vec_j[1] * j_vec_k[2]);
+}
