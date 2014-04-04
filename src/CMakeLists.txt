@@ -12,4 +12,6 @@ set(dynamics_sources
 add_executable(traj-54 compute-traj-54 ${dynamics_sources})
 install_targets( /bin traj-54)
 
+add_executable(test-config test-config find-config config-fns)
+install_targets(/bin test-config)
 
