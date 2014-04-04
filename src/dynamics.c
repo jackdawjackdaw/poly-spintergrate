@@ -104,11 +104,130 @@ double wijk(double *jvec, int i, int j, int k)
   /* printf("%lf %lf %lf\n", j_vec_i[0], j_vec_i[1], j_vec_i[2]); */
   /* printf("%lf %lf %lf\n", j_vec_j[0], j_vec_j[1], j_vec_j[2]); */
   /* printf("%lf %lf %lf\n", j_vec_k[0], j_vec_k[1], j_vec_k[2]); */
+  return(three_vec_triple_prod(j_vec_i, j_vec_j, j_vec_k));
+}
+
+double three_vec_triple_prod(double* vec_i, double* vec_j, double* vec_k)
+{
+  return(  -1*vec_i[2] * vec_j[1] * vec_k[0] 
+           + vec_i[1] * vec_j[2] * vec_k[0] 
+           + vec_i[2] * vec_j[0] * vec_k[1]
+           - vec_i[0] * vec_j[2] * vec_k[1]
+           - vec_i[1] * vec_j[0] * vec_k[2]
+           + vec_i[0] * vec_j[1] * vec_k[2]);
+}  
+
+double three_vec_norm(double *vec)
+{
+  return(sqrt(vec[0]*vec[0] + vec[1]*vec[1] + vec[2]*vec[2]));
+}
+
+double three_vec_dot(double *v1, double* v2)
+{
+  return( v1[0] * v2[0] + v1[1]*v2[1] + v1[2]*v2[2]);
+}
+
+void three_vec_cross(double* v1, double* v2, double* result)
+{
+  result[0] = -1.0*v1[2]*v2[1] + v1[1]* v2[2];
+  result[1] = v1[2]*v2[0] - v1[0]* v2[2];
+  result[2] = -1.0*v1[1]*v2[0] + v1[0]* v2[1];
+}
+
+double signed_angle(double* avec, double* bvec, double* dirn)
+{
+  double sina, cosa;
+  double normA, normB;
+
+  double crossVec[3];
+  double angle, sign;
+
+  normA = three_vec_norm(avec);
+  normB = three_vec_norm(bvec);
+
+  three_vec_cross(avec, bvec, crossVec);
+
+  sina = three_vec_norm(crossVec) / (normA*normB);
+  cosa = three_vec_dot(avec, bvec)/(normA*normB);
+
+  // note that MM has the argumets backwards
+  angle = atan2(sina, cosa);
   
-  return(  -1*j_vec_i[2] * j_vec_j[1] * j_vec_k[0] 
-           + j_vec_i[1] * j_vec_j[2] * j_vec_k[0] 
-           + j_vec_i[2] * j_vec_j[0] * j_vec_k[1]
-           - j_vec_i[0] * j_vec_j[2] * j_vec_k[1]
-           - j_vec_i[1] * j_vec_j[0] * j_vec_k[2]
-           + j_vec_i[0] * j_vec_j[1] * j_vec_k[2]);
+  sign = three_vec_triple_prod(dirn, avec, bvec);
+
+  if(sign < 0)
+    angle = 2*M_PI - angle;
+
+  return(angle);
+}
+
+double get_km_phase_space(double* jvec, double* zvec)
+{
+  double p0vec[3];
+  double p1vec[3];
+  double p2vec[3];
+  double p3vec[3];
+
+  double avec[3];
+  double bvec[3];
+
+  double tempvec[3];
+  double temp_norm = 0.0;
+
+  double p1 = 0.0, p2 = 0.0;
+  double q1 = 0.0, q2 = 0.0;
+  int i;
+  
+
+  for(i = 0; i < 3; i++){
+    p0vec[i] = jvec[i+1];
+    p1vec[i] = p0vec[i] + jvec[(4+i)];
+    p2vec[i] = p1vec[i] + jvec[(7+i)];
+    p3vec[i] = p2vec[i] + jvec[(10+i)];
+  }
+
+  p1 = three_vec_norm(p1vec);
+  p2 = three_vec_norm(p2vec);
+
+  three_vec_cross(p0vec, p1vec, tempvec);
+  temp_norm = three_vec_norm(tempvec);
+
+  three_vec_cross(p0vec, p1vec, avec);
+  avec[0] = avec[0] / temp_norm;
+  avec[1] = avec[1] / temp_norm;
+  avec[2] = avec[2] / temp_norm;
+
+  three_vec_cross(p1vec, p2vec, tempvec);
+  temp_norm = three_vec_norm(tempvec);
+
+  three_vec_cross(p1vec, p2vec, bvec);
+  bvec[0] = bvec[0] / temp_norm;
+  bvec[1] = bvec[1] / temp_norm;
+  bvec[2] = bvec[2] / temp_norm;
+  
+  q1 = signed_angle(avec, bvec, p1vec);
+
+  three_vec_cross(p1vec, p2vec, tempvec);
+  temp_norm = three_vec_norm(tempvec);
+
+  three_vec_cross(p1vec, p2vec, avec);
+  avec[0] = avec[0] / temp_norm;
+  avec[1] = avec[1] / temp_norm;
+  avec[2] = avec[2] / temp_norm;
+
+  three_vec_cross(p2vec, p3vec, tempvec);
+  temp_norm = three_vec_norm(tempvec);
+
+  three_vec_cross(p2vec, p3vec, bvec);
+  bvec[0] = bvec[0] / temp_norm;
+  bvec[1] = bvec[1] / temp_norm;
+  bvec[2] = bvec[2] / temp_norm;
+
+    
+  q2 = signed_angle(avec, bvec, p2vec);
+
+  zvec[0] = q1;
+  zvec[1] = q2;
+  zvec[2] = p1;  
+  zvec[3] = p2;
 }

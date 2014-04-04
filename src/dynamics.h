@@ -10,5 +10,12 @@ double get_volume(double* j);
 
 void get_norms(double*j, double* norms);
   
+double three_vec_triple_prod(double* vec_i, double* vec_j, double* vec_k);
+double three_vec_norm(double *vec);
+double three_vec_dot(double *v1, double* v2);
+void three_vec_cross(double* v1, double* v2, double* result);
+double signed_angle(double* avec, double* bvec, double* dirn);
+
+double get_km_phase_space(double* jvec, double* zvec);
 
 #endif
