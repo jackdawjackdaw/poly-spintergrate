@@ -26,11 +26,12 @@ int main(int argc, char * argv[]){
   double j_next_vec[13]; // do one fixedPointSeep
   double zprev[13];
   double norms[4];
+  double zvec[4];
   double time = 0.0;
   double dt = 0.01;
   double alpha = 0.0, beta = 0.0, gamma = 0.0, wvol = 0.0;
-  int print_interval = 4;
-  int nstep = 50000;
+  int print_interval = 16;
+  int nstep = 100000;
   int count = 0;
 
   printf("0.0 ");
@@ -53,6 +54,11 @@ int main(int argc, char * argv[]){
     printf("%lf ", norms[i]);
   printf("\n");
   
+  get_km_phase_space(jvec, zvec);
+  printf("# km: ");
+  for(i = 0; i<4; i++)
+    printf("%lf ", zvec[i]);
+  printf("\n");
   
   while(count < nstep){
     fixed_point_iterate(jvec, j_next_vec, dt);
@@ -68,11 +74,12 @@ int main(int argc, char * argv[]){
       get_scalings(jvec, &alpha, &beta, &gamma, &wvol);
       printf("%lf %lf %lf %lf", alpha, beta, gamma, wvol);
       printf(" %lf ", get_volume(jvec));
-      /* might want to output this for cases where the norms get mangled, should be ok for 'good' trajectories */
-      get_norms(jvec, norms);
+
+      get_km_phase_space(jvec, zvec);
       for(i = 0; i<4; i++)
-        printf("%lf ", norms[i]);
+        printf("%lf ", zvec[i]);
       printf("\n");
+
       
     }
 
