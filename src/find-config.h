@@ -1,6 +1,10 @@
 #ifndef _INC_FIND_CONFIG_
 #define _INC_FIND_CONFIG_
 
+/**
+ * all of these functions will be filled in by MM
+ */
+
 int test_config_1(double alpha, double beta, double gamma);
 int test_config_2(double alpha, double beta, double gamma);
 int test_config_3(double alpha, double beta, double gamma);
