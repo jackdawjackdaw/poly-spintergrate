@@ -12,7 +12,7 @@
  * ccs, cec24@phy.duke.edu
  * 04.04.2014
  * 
- * integrate the 54 system, reads an initial config from stdin and then
+ * integrate the system, reads an initial config from stdin and then
  * goes ahead and chugs away using the fixed point midpoint update scheme
  */
  
