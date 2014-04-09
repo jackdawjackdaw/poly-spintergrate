@@ -1,3 +1,5 @@
+#include "dynamics-eom-all.h"
+
 /**
  * ccs, 04.04.2014
  * filled in by MM, this is one huge ass file

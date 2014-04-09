@@ -16,6 +16,6 @@ double three_vec_dot(double *v1, double* v2);
 void three_vec_cross(double* v1, double* v2, double* result);
 double signed_angle(double* avec, double* bvec, double* dirn);
 
-double get_km_phase_space(double* jvec, double* zvec);
+void get_km_phase_space(double* jvec, double* zvec);
 
 #endif

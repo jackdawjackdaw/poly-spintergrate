@@ -1,7 +1,10 @@
 #include "fixed-point-iter.h"
 #include "dynamics.h"
+#include "config-fns.h"
+#include "eom-fns.h"
 #include <math.h>
 
+#include <stdio.h>
 
 /**
  * carry out a fixed point step, part of a loop to compute the new 
@@ -19,11 +22,11 @@
  */
 void fixed_point_step(double* jin, double* jout, double* zprev, double dt)
 {
-  double tdvec[13];
   double tdnorms[4];
   double tvec[13];
   double vecsum[13];
   int i;
+  int configIndex;
 
   for(i = 1; i < 13; i ++){
     vecsum[i] = jin[i] + zprev[i];
@@ -49,9 +52,24 @@ void fixed_point_step(double* jin, double* jout, double* zprev, double dt)
   tvec[12] = vecsum[12] / tdnorms[3];	
 
   
+#ifdef SIMPLEMODE
   get_eom_full(tvec, jout);
+#else
+  /** 
+   * we have to be careful here, we can't just use tvec, we need to use something 
+   * like jout to estimate the config index and then do it...
+   * 
+   * should probably use an explicit step, estimate the config at the end and then
+   * see if its consistant
+   */
   
-  for(i = 0; i < 13; i++){
+  configIndex = get_config_index_spin(jin);
+
+  //printf("%d\n", configIndex);
+  get_eom_all(tvec, jout, configIndex);
+#endif  
+  
+  for(i = 1; i < 13; i++){
     jout[i] = 0.5 * dt*jout[i];
   }
   

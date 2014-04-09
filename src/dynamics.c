@@ -155,13 +155,15 @@ double signed_angle(double* avec, double* bvec, double* dirn)
   
   sign = three_vec_triple_prod(dirn, avec, bvec);
 
+  //printf("# %lf %lf %lf %lf\n", sign, angle, normA, normB);
+  
   if(sign < 0)
     angle = 2*M_PI - angle;
 
   return(angle);
 }
 
-double get_km_phase_space(double* jvec, double* zvec)
+void get_km_phase_space(double* jvec, double* zvec)
 {
   double p0vec[3];
   double p1vec[3];

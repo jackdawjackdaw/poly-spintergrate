@@ -1,6 +1,9 @@
 #include "eom-fns.h"
+#include "dynamics-eom-all.h"
 
-
+/**
+ * sets jout to the EOM[CONFIG][Jin]
+ */
 void get_eom_all(double *Jin, double* Jout, int config)
 {
   pt2EomFun funcArr[20] = {

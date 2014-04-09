@@ -1,6 +1,9 @@
 #ifndef _INC_DYNAMICS_EOM_ALL_
 #define _INC_DYNAMICS_EOM_ALL_
 
+#include <math.h>
+#include "mdefs.h"
+
 void eom_rhs_1(double* J, double* Jout);
 void eom_rhs_2(double* J, double* Jout);
 void eom_rhs_3(double* J, double* Jout);
