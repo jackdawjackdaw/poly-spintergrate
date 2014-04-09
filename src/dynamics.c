@@ -49,6 +49,9 @@ double ham_54(double alpha, double beta, double gamma, double wvol)
 }
 
 /* wrap ham_54 to give the vol from a j list */
+
+/** oh you pudding, this volume just isn't right for the other configs
+ */
 double get_volume(double* j)
 {
   double alpha = 0.0, beta = 0.0, gamma = 0.0, wvol = 0.0;

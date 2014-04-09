@@ -25,8 +25,12 @@ void fixed_point_step(double* jin, double* jout, double* zprev, double dt)
   double tdnorms[4];
   double tvec[13];
   double vecsum[13];
+  double jtest[13], jtest2[13];
+  double jfvecEuler[13];
   int i;
   int configIndex;
+  int configIndexOrig;
+  int configIndex2;
 
   for(i = 1; i < 13; i ++){
     vecsum[i] = jin[i] + zprev[i];
@@ -53,20 +57,30 @@ void fixed_point_step(double* jin, double* jout, double* zprev, double dt)
 
   
 #ifdef SIMPLEMODE
+  /* this runs only the 54 config */
   get_eom_full(tvec, jout);
 #else
   /** 
    * we have to be careful here, we can't just use tvec, we need to use something 
    * like jout to estimate the config index and then do it...
-   * 
-   * should probably use an explicit step, estimate the config at the end and then
-   * see if its consistant
    */
-  
-  configIndex = get_config_index_spin(jin);
+  configIndexOrig = get_config_index_spin(jin); // this is the index at the previous point
 
-  //printf("%d\n", configIndex);
-  get_eom_all(tvec, jout, configIndex);
+  // get the eom for an euler step
+  get_eom_all(jin, jfvecEuler, configIndexOrig);
+  for(i = 1; i < 13; i++){
+    //jtest[i] = 2.0*tvec[i] + jin[i];
+    jtest2[i] = 2.0*zprev[i] + jin[i];
+    // an explicit euler step
+    jtest[i] = jin[i] + dt * jfvecEuler[i];
+  }
+
+  // this is the index at the euler point, use this as our guess for what our actual midpoint will give us?
+  configIndex = get_config_index_spin(jtest); 
+  configIndex2 = get_config_index_spin(jtest2); // 
+
+  //printf("%d %d\n", configIndex, configIndex2);
+  get_eom_all(tvec, jout, configIndex2);
 #endif  
   
   for(i = 1; i < 13; i++){
@@ -85,9 +99,9 @@ void fixed_point_step(double* jin, double* jout, double* zprev, double dt)
 void fixed_point_iterate(double* jin, double* jnext, double dt)
 {
   /* loop here silently stops after this many attempts */
-  int stepMax = 16; 
+  int stepMax = 32; 
   /* minimal discrepancy, Harirer et al suggest something a little bigger than DOUBLE_EPS, see gauss-collocation.c */
-  double eps = 1e-12; 
+  double eps = 1e-13; 
   int nstep = 0;
   double zin[13];
   double znext[13];
@@ -112,6 +126,9 @@ void fixed_point_iterate(double* jin, double* jnext, double dt)
     }
     nstep++;
   }
+  
+  if(nstep >= stepMax)
+    fprintf(stderr, "step failed to converge\n");
   
   for(i = 1; i < 13; i++){
     /* this two here is the butcher C_12 coeff (i think)

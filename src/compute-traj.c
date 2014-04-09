@@ -31,8 +31,9 @@ int main(int argc, char * argv[]){
   double time = 0.0;
   double dt = 0.01;
   double alpha = 0.0, beta = 0.0, gamma = 0.0, wvol = 0.0;
-  int print_interval = 4;
-  int nstep = 1000;
+  FILE *fptr = fopen("spin-traj.dat", "w");
+  int print_interval = 1;
+  int nstep = 5000;
   int count = 0;
 
   int confNames[20] = {54, 53, 52, 51, 43, 42, 41, 35, 34, 32, 31, 25, 24, 23, 21, 15, 14, 13, 12};
@@ -91,6 +92,11 @@ int main(int argc, char * argv[]){
       for(i = 0; i<4; i++)
         printf("%lf ", zvec[i]);
 
+      get_norms(jvec, norms);
+      for(i = 0; i<4; i++)
+        printf("%lf ", norms[i]);
+
+      
       config = get_config_index_spin(jvec);
       if(config >= 0){
         printf("%d", confNames[config]);
@@ -99,6 +105,12 @@ int main(int argc, char * argv[]){
       }
       printf("\n");
 
+      fprintf(fptr,"%lf ", time);
+      for(i = 1; i < 13; i++)
+        fprintf(fptr, "%lf ", jvec[i]);
+      fprintf(fptr, "\n");
+
+      
       
     }
 
@@ -106,5 +118,7 @@ int main(int argc, char * argv[]){
     count++;
   } 
 
+  fclose(fptr);
+    
   return(EXIT_SUCCESS);
 }

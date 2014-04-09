@@ -19,13 +19,13 @@ add_library(dynEomFull SHARED dynamics-eom-all)
 install_targets(/lib dynEomFull)
 
 
-add_executable(traj-54 compute-traj-54 ${dynamics_sources} ${config_sources})
+add_executable(traj-54 compute-traj ${dynamics_sources} ${config_sources})
 SET_TARGET_PROPERTIES(traj-54 PROPERTIES COMPILE_FLAGS -DSIMPLEMODE)
 target_link_libraries(traj-54 dynEomFull)
 add_dependencies(traj-54 dynEomFull)
 install_targets( /bin traj-54)
 
-add_executable(traj-full compute-traj-54 ${dynamics_sources} ${config_sources})
+add_executable(traj-full compute-traj ${dynamics_sources} ${config_sources})
 target_link_libraries(traj-full dynEomFull)
 add_dependencies(traj-full dynEomFull)
 install_targets( /bin traj-full)
