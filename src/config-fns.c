@@ -1,3 +1,4 @@
+#include "stdio.h"
 #include "config-fns.h"
 #include "find-config.h"
 #include "dynamics.h"
@@ -41,6 +42,8 @@ int get_config_index(double alpha, double beta, double gamma)
     }
   }
   
+  fprintf(stderr, "config broke %lf %lf %lf\n", alpha, beta, gamma);
+  
   return -1;
 }
 
@@ -49,7 +52,8 @@ int get_config_index(double alpha, double beta, double gamma)
 int get_config_index_spin(double* j)
 {
   double alpha, beta, gamma, wvol;
+  int retval;
   get_scalings(j, &alpha, &beta, &gamma, &wvol);
-  //printf("# scalings: %lf %lf %lf %lf\n", alpha, beta, gamma, wvol);
-  return(get_config_index(alpha, beta, gamma));
+  retval = get_config_index(alpha, beta, gamma);
+  return(retval);
 }

@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "eom-fns.h"
 #include "dynamics-eom-all.h"
 
@@ -29,6 +31,11 @@ void get_eom_all(double *Jin, double* Jout, int config)
     &eom_rhs_20
   };
 
+  if(config < 0 || config > 20){
+    fprintf(stderr, "config is broken in EOM fns\n");
+    exit(EXIT_FAILURE);
+  }
+  
   /* now call the thing */
   funcArr[config](Jin, Jout);
 }

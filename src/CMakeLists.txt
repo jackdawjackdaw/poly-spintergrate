@@ -2,12 +2,13 @@ cmake_minimum_required(VERSION 2.6)
 
 add_definitions("-m64 -O3 -Wall")
 
-
 set(dynamics_sources
   dynamics-eom-54.c
   dynamics.c
   fixed-point-iter.c
   eom-fns.c
+  ham-fns.c
+  ham-all.c
 )
 
 set(config_sources

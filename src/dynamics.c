@@ -4,6 +4,8 @@
 #include "dynamics.h"
 #include "dynamics-eom-54.h"
 
+#include "ham-fns.h"
+
 /**
  * general functions which are helpful for the dynamics
  * spin indices are counted from 1, to match up with the MM definitions
@@ -51,12 +53,14 @@ double ham_54(double alpha, double beta, double gamma, double wvol)
 /* wrap ham_54 to give the vol from a j list */
 
 /** oh you pudding, this volume just isn't right for the other configs
+ * \todo: fix fix fix this   
  */
 double get_volume(double* j)
 {
-  double alpha = 0.0, beta = 0.0, gamma = 0.0, wvol = 0.0;
-  get_scalings(j, &alpha, &beta, &gamma, &wvol);
-  return(ham_54(alpha, beta, gamma, wvol));
+  /* double alpha = 0.0, beta = 0.0, gamma = 0.0, wvol = 0.0; */
+  /* get_scalings(j, &alpha, &beta, &gamma, &wvol); */
+  /* return(ham_54(alpha, beta, gamma, wvol)); */
+  return(get_ham_all(j));
 }
 
 /** 

@@ -7,6 +7,9 @@
 #include "dynamics-eom-54.h"
 #include "config-fns.h"
 
+extern double zLastStep[13];
+extern int failedCount;
+
 
 /**
  * ccs, cec24@phy.duke.edu
@@ -14,6 +17,9 @@
  * 
  * integrate the system, reads an initial config from stdin and then
  * goes ahead and chugs away using the fixed point midpoint update scheme
+ * 
+ * 24.04.2014
+ * issue - results dont seem to be consistent with varying dt
  */
  
 /**
@@ -29,11 +35,12 @@ int main(int argc, char * argv[]){
   double norms[4];
   double zvec[4];
   double time = 0.0;
+  // was using 0.001 as the default
   double dt = 0.01;
   double alpha = 0.0, beta = 0.0, gamma = 0.0, wvol = 0.0;
   FILE *fptr = fopen("spin-traj.dat", "w");
-  int print_interval = 1;
-  int nstep = 5000;
+  int print_interval = 32;
+  int nstep = 18200;
   int count = 0;
 
   int confNames[20] = {54, 53, 52, 51, 43, 42, 41, 35, 34, 32, 31, 25, 24, 23, 21, 15, 14, 13, 12};
@@ -47,8 +54,11 @@ int main(int argc, char * argv[]){
     printf("%lf ", jvec[i]);
     
     zprev[i] = 0.0; // init this at the same time
+    zLastStep[i] = 0.0; // this is a global in fixed-point-iter.c
   }
   printf("\n");
+
+  failedCount = 0;
   
   get_scalings(jvec, &alpha, &beta, &gamma, &wvol);
   printf("# scalings: %lf %lf %lf %lf\n", alpha, beta, gamma, wvol);
@@ -99,7 +109,7 @@ int main(int argc, char * argv[]){
       
       config = get_config_index_spin(jvec);
       if(config >= 0){
-        printf("%d", confNames[config]);
+        printf("%d", config);
       } else {
         printf("%d", config);
       }
@@ -119,6 +129,8 @@ int main(int argc, char * argv[]){
   } 
 
   fclose(fptr);
-    
+
+  printf("# failed steps: %d\n", failedCount);
+  
   return(EXIT_SUCCESS);
 }
