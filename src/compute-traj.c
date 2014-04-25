@@ -20,6 +20,14 @@ extern int failedCount;
  * 
  * 24.04.2014
  * issue - results dont seem to be consistent with varying dt
+ * 
+ * usage: 
+ * reads an input configuration of the first 4 spins, j1x, j1y ... j4x, j4y, j4z from stdin
+ * integrates the system up to tstop printing summary variables to stdout and the actual spin configurations
+ * to 'spin-traj.dat'.
+ *
+ * The time step and stop time can be set as the first two command line arguments. Time steps > 0.1 seem to cause
+ * floating point exceptions.
  */
  
 /**
@@ -37,16 +45,40 @@ int main(int argc, char * argv[]){
   double time = 0.0;
   // was using 0.001 as the default
   double dt = 0.01;
+  // when to stop
+  double tstop = 1.0; 
+  
   double alpha = 0.0, beta = 0.0, gamma = 0.0, wvol = 0.0;
   FILE *fptr = fopen("spin-traj.dat", "w");
-  int print_interval = 32;
-  int nstep = 18200;
+  /* how often to print output */
+  double output_time = 0.01;
+  
+  int nstep = 0; //(int)(tstop/dt);
+  int print_interval = 0; //(int)(output_time/dt);
   int count = 0;
 
   int confNames[20] = {54, 53, 52, 51, 43, 42, 41, 35, 34, 32, 31, 25, 24, 23, 21, 15, 14, 13, 12};
   
   int config; 
 
+  /**
+   * process some trivial command line stuff 
+   */
+  
+  /** read arg1 -> dt, arg2 -> tstop */
+  if(argc > 1){
+    dt = atof(argv[1]);
+  }
+  if(argc > 2){
+    tstop = atof(argv[2]);
+  }
+
+  nstep = (int)(tstop/dt);
+  print_interval = (int)(output_time/dt);
+  
+  printf("# dt %lf, tstop %lf, nstep %d\n", dt, tstop, nstep);
+
+  /** print out the first step and also clear up some global accumulators */
   printf("0.0 ");
   for(i = 1; i < 13; i++){
     scanf("%lf", &jin);
@@ -63,7 +95,7 @@ int main(int argc, char * argv[]){
   get_scalings(jvec, &alpha, &beta, &gamma, &wvol);
   printf("# scalings: %lf %lf %lf %lf\n", alpha, beta, gamma, wvol);
   printf("# volume: %lf\n", get_volume(jvec));
-
+  
   get_norms(jvec, norms);
   printf("# norms: ");
   for(i = 0; i<4; i++)
@@ -82,7 +114,9 @@ int main(int argc, char * argv[]){
   } else {
     printf("# config broken! %d\n", config);
   }
-  
+
+
+  /** dynamics loop here */
   while(count < nstep){
     fixed_point_iterate(jvec, j_next_vec, dt);
     time = count*dt;
@@ -119,12 +153,8 @@ int main(int argc, char * argv[]){
       for(i = 1; i < 13; i++)
         fprintf(fptr, "%lf ", jvec[i]);
       fprintf(fptr, "\n");
-
-      
       
     }
-
-    
     count++;
   } 
 
