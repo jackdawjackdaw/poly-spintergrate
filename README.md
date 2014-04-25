@@ -45,3 +45,29 @@ long times, although so far I've not tested it further than t=1000 with dt=0.01.
 
 The input config `test-norm-bad.txt` seems to choke (probably due to a boundary crossing) at about t=5,
 confirmed with dt = 0.01 and dt=0.0001.
+
+## TimeStep Testing
+
+The `test-dt.sh` script can be used to run the code with a variety of time steps, results for the
+`test-norm.txt` input can be found in `dt-test`. Things seem to converge for dt < 1e-4
+
+## comparison to other code
+
+For the equifacial J=1 case, the input configurations (in the km variables)
+    0.3 0.4 0.90 0.91
+    0.39 0.49 0.72 0.52
+are somewhat canonical, we can convert these into test configurations for the Jspin mode using the testtri.out program from the old project
+    
+    0.300000 0.400000 0.900000 0.910000 0.5950000000000000 -0.1268420441422706 0.9605031835769006 -0.9217923692713692 0.2432560099607408
+    0.390000 0.490000 0.720000 0.520000 0.7408000000000000 -0.6424454075882373 0.7424881777579435 -0.9194442230709421 -0.3159278343080713
+
+this output lists `q1, q2, p1, p2, n2z, n3y, n3z, n4y, n4z`, the jlists are then
+
+    0  0  -1  0  0.803726  0.595  0.247679  -0.126842  0.960503  0.30187  -0.921792  0.243256
+    0  0  -1  0  0.671726  0.7408  0.189671  -0.642445  0.742488  0.234119  -0.919444  -0.315928
+
+the first of these is written to `test-norms-equi-1.dat`. A quick sanity check is to use the function
+`hamPiecewise` in the MM notebook to obtain the volume and compare this against the output of `hamscan.out` in
+the original project codebase. The reported volumes do indeed agree. 
+    
+    
