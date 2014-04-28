@@ -9,6 +9,8 @@ set(dynamics_sources
   eom-fns.c
   ham-fns.c
   ham-all.c
+  boundary-fns.c
+  find-boundary.c
 )
 
 set(config_sources
