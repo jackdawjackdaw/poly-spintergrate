@@ -123,9 +123,10 @@ void fixed_point_iterate(double* jin, double* jnext, double dt)
   /* initiate the fixed point search with the stupidest guess, (totally zero)
    * it would be more sensible to use the znext obtained in the last step 
    */
-  for(i = 1; i< 13; i++)
-    zin[i] = 0.0;
-    //zin[i] = zLastStep[i];
+  for(i = 1; i< 13; i++){
+    //zin[i] = 0.0;
+    zin[i] = zLastStep[i];
+  }
   
   while(diff >= eps && nstep < stepMax){
 
@@ -149,6 +150,6 @@ void fixed_point_iterate(double* jin, double* jnext, double dt)
     /* this two here is the butcher C_12 coeff (i think)
      */
     jnext[i] = 2.0*znext[i] + jin[i];
-    //zLastStep[i] = znext[i];
+    zLastStep[i] = znext[i];
   }
 }

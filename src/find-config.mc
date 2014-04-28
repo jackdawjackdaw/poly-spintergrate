@@ -1,6 +1,10 @@
 #include "find-config.h"
 #include "mdefs.h"
 
+/**
+ * filled in by MM, on <* DateList[] *>
+ */
+
 int test_config_1(double alpha, double beta, double gamma){
   if( <* ineqToExportForm[ineqTabFullLarger[[1]]] *> ){
       return 1;

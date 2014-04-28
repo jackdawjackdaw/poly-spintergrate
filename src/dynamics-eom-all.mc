@@ -2,10 +2,16 @@
 
 /**
  * ccs, 04.04.2014
- * filled in by MM, this is one huge ass file
+ * filled in by MM, on <* DateList[] *>
+ *
+ * this is one huge ass file
+ * 
  * each fn returns the RHS (in Jout) of the eom for each of the 20 configs
  */
 
+double k = 100000;
+
+ 
 void eom_rhs_1(double* J, double* Jout)
 {
   Jout[1] = <*ToExportForm[eomListList[[1]][[1]]] *>;

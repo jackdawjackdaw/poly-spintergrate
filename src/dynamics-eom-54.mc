@@ -2,11 +2,14 @@
 
 /**
  * ccs, 04.04.2014
+ * filled in by MM, on <* DateList[] *>
  * 
  * the lines <* mm-expression *>
  * are replaced by the result of Mathematica evalutating the mm-expression
  */
 
+double k = 100000;
+ 
 double eom_rhs_54_1(double* J)
 {
   double ev;

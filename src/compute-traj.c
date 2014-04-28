@@ -7,6 +7,8 @@
 #include "dynamics-eom-54.h"
 #include "config-fns.h"
 
+#include "find-boundary.h"
+
 extern double zLastStep[13];
 extern int failedCount;
 
@@ -29,6 +31,13 @@ extern int failedCount;
  * The time step and stop time can be set as the first two command line arguments. Time steps > 0.1 seem to cause
  * floating point exceptions.
  */
+
+double findlowest(double a, double b, double c)
+{
+    double of_a_b = a < b ? a : b;
+    return of_a_b < c ? of_a_b : c;
+}
+
  
 /**
  * the spins are indexed from 1-12 so we have to 
@@ -47,11 +56,14 @@ int main(int argc, char * argv[]){
   double dt = 0.01;
   // when to stop
   double tstop = 1.0; 
+
+  /* boundary scales, should be small when we get near one */
+  double b1, b2, b3; 
   
   double alpha = 0.0, beta = 0.0, gamma = 0.0, wvol = 0.0;
   FILE *fptr = fopen("spin-traj.dat", "w");
   /* how often to print output */
-  double output_time = 0.01;
+  double output_time = 0.05;
   
   int nstep = 0; //(int)(tstop/dt);
   int print_interval = 0; //(int)(output_time/dt);
@@ -147,6 +159,9 @@ int main(int argc, char * argv[]){
       } else {
         printf("%d", config);
       }
+
+      get_boundary_scales(jvec, &b1, &b2, &b3);
+      printf(" %lf", findlowest(b1,b2,b3));
       printf("\n");
 
       fprintf(fptr,"%lf ", time);
