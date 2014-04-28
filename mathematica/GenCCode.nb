@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     70657,       2156]
-NotebookOptionsPosition[     67560,       2048]
-NotebookOutlinePosition[     68171,       2073]
-CellTagsIndexPosition[     68085,       2068]
+NotebookDataLength[     70681,       2158]
+NotebookOptionsPosition[     67624,       2051]
+NotebookOutlinePosition[     68235,       2076]
+CellTagsIndexPosition[     68149,       2071]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -163,7 +163,7 @@ neither a machine-sized integer nor a list of machine-sized integers. \
 ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/pspec\\\", \
 ButtonNote -> \\\"Part::pspec\\\"]\\)\"\>"}]], "Message", "MSG",
  CellChangeTimes->{3.6075117802233877`*^9, 3.607511883370555*^9, 
-  3.607512184857066*^9, 3.607513706538455*^9}],
+  3.607512184857066*^9, 3.607513706538455*^9, 3.607513816179191*^9}],
 
 Cell[BoxData[
  RowBox[{
@@ -176,7 +176,20 @@ Cell[BoxData[
 ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partd\\\", \
 ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
  CellChangeTimes->{3.6075117802233877`*^9, 3.607511883370555*^9, 
-  3.607512184857066*^9, 3.6075137066160717`*^9}],
+  3.607512184857066*^9, 3.607513706538455*^9, 3.6075138162266912`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "partd"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part specification \[NoBreak]\\!\\(J \[LeftDoubleBracket] \
+3 \[RightDoubleBracket]\\)\[NoBreak] is longer than depth of object. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partd\\\", \
+ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6075117802233877`*^9, 3.607511883370555*^9, 
+  3.607512184857066*^9, 3.607513706538455*^9, 3.6075138162986593`*^9}],
 
 Cell[BoxData[
  RowBox[{
@@ -189,20 +202,7 @@ Cell[BoxData[
 ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partd\\\", \
 ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
  CellChangeTimes->{3.6075117802233877`*^9, 3.607511883370555*^9, 
-  3.607512184857066*^9, 3.607513706683464*^9}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"Part", "::", "partd"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Part specification \[NoBreak]\\!\\(J \[LeftDoubleBracket] \
-7 \[RightDoubleBracket]\\)\[NoBreak] is longer than depth of object. \
-\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
-ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partd\\\", \
-ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.6075117802233877`*^9, 3.607511883370555*^9, 
-  3.607512184857066*^9, 3.607513706685875*^9}],
+  3.607512184857066*^9, 3.607513706538455*^9, 3.607513816363078*^9}],
 
 Cell[BoxData[
  RowBox[{
@@ -216,7 +216,7 @@ ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
 ButtonData:>\\\"paclet:ref/message/General/stop\\\", ButtonNote -> \
 \\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
  CellChangeTimes->{3.6075117802233877`*^9, 3.607511883370555*^9, 
-  3.607512184857066*^9, 3.6075137067475157`*^9}]
+  3.607512184857066*^9, 3.607513706538455*^9, 3.607513816364586*^9}]
 }, Open  ]]
 }, Open  ]],
 
@@ -240,7 +240,8 @@ Cell[BoxData[
 
 Cell[BoxData["\<\"~/Projects/poly-spintergrate/src/dynamics-eom-all.mc\"\>"], \
 "Output",
- CellChangeTimes->{3.6075119284073467`*^9, 3.6075122257275743`*^9}]
+ CellChangeTimes->{3.6075119284073467`*^9, 3.6075122257275743`*^9, 
+  3.607513818811164*^9}]
 }, Open  ]],
 
 Cell[BoxData[
@@ -275,7 +276,8 @@ neither a machine-sized integer nor a list of machine-sized integers. \
 ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/pspec\\\", \
 ButtonNote -> \\\"Part::pspec\\\"]\\)\"\>"}]], "Message", "MSG",
  CellChangeTimes->{3.6075119591696367`*^9, 3.607512187965982*^9, 
-  3.607512242497169*^9, 3.607513639327509*^9, 3.607513690761347*^9}],
+  3.607512242497169*^9, 3.607513639327509*^9, 3.607513690761347*^9, 
+  3.607513840383716*^9}],
 
 Cell[BoxData[
  RowBox[{
@@ -288,7 +290,22 @@ Cell[BoxData[
 ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partd\\\", \
 ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
  CellChangeTimes->{3.6075119591696367`*^9, 3.607512187965982*^9, 
-  3.607512242497169*^9, 3.607513639327509*^9, 3.607513690816276*^9}],
+  3.607512242497169*^9, 3.607513639327509*^9, 3.607513690761347*^9, 
+  3.607513840432147*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "partd"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part specification \[NoBreak]\\!\\(J \[LeftDoubleBracket] \
+3 \[RightDoubleBracket]\\)\[NoBreak] is longer than depth of object. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partd\\\", \
+ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6075119591696367`*^9, 3.607512187965982*^9, 
+  3.607512242497169*^9, 3.607513639327509*^9, 3.607513690761347*^9, 
+  3.60751384048938*^9}],
 
 Cell[BoxData[
  RowBox[{
@@ -301,20 +318,8 @@ Cell[BoxData[
 ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partd\\\", \
 ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
  CellChangeTimes->{3.6075119591696367`*^9, 3.607512187965982*^9, 
-  3.607512242497169*^9, 3.607513639327509*^9, 3.607513690885401*^9}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"Part", "::", "partd"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Part specification \[NoBreak]\\!\\(J \[LeftDoubleBracket] \
-7 \[RightDoubleBracket]\\)\[NoBreak] is longer than depth of object. \
-\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
-ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partd\\\", \
-ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.6075119591696367`*^9, 3.607512187965982*^9, 
-  3.607512242497169*^9, 3.607513639327509*^9, 3.6075136908875523`*^9}],
+  3.607512242497169*^9, 3.607513639327509*^9, 3.607513690761347*^9, 
+  3.607513840554852*^9}],
 
 Cell[BoxData[
  RowBox[{
@@ -328,7 +333,8 @@ ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
 ButtonData:>\\\"paclet:ref/message/General/stop\\\", ButtonNote -> \
 \\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
  CellChangeTimes->{3.6075119591696367`*^9, 3.607512187965982*^9, 
-  3.607512242497169*^9, 3.607513639327509*^9, 3.607513690951746*^9}]
+  3.607512242497169*^9, 3.607513639327509*^9, 3.607513690761347*^9, 
+  3.607513840557311*^9}]
 }, Open  ]]
 }, Open  ]],
 
@@ -345,7 +351,8 @@ Cell[BoxData[
  CellChangeTimes->{{3.6075114771850777`*^9, 3.607511490668065*^9}}],
 
 Cell[BoxData["\<\"~/Projects/poly-spintergrate/src/ham-all.mc\"\>"], "Output",
- CellChangeTimes->{3.607512265819827*^9, 3.6075136585717697`*^9}]
+ CellChangeTimes->{3.607512265819827*^9, 3.6075136585717697`*^9, 
+  3.607513858598749*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -359,50 +366,54 @@ Cell[BoxData[
   FractionBox["1", "3"], " ", 
   SqrtBox["2"], " ", 
   SqrtBox[
-   SubscriptBox["W", 
-    RowBox[{"1", ",", "2", ",", "3"}]]], " ", 
+   RowBox[{"Abs", "[", 
+    SubscriptBox["W", 
+     RowBox[{"1", ",", "2", ",", "3"}]], "]"}]], " ", 
   RowBox[{"(", 
    RowBox[{
     SqrtBox[
-     FractionBox[
-      RowBox[{
-       SubscriptBox["W", 
-        RowBox[{"1", ",", "2", ",", "4"}]], " ", 
-       SubscriptBox["W", 
-        RowBox[{"1", ",", "3", ",", "4"}]], " ", 
-       SubscriptBox["W", 
-        RowBox[{"2", ",", "3", ",", "4"}]]}], 
-      SubsuperscriptBox["W", 
-       RowBox[{"1", ",", "2", ",", "3"}], "3"]]], "-", 
+     RowBox[{"Abs", "[", 
+      FractionBox[
+       RowBox[{
+        SubscriptBox["W", 
+         RowBox[{"1", ",", "2", ",", "4"}]], " ", 
+        SubscriptBox["W", 
+         RowBox[{"1", ",", "3", ",", "4"}]], " ", 
+        SubscriptBox["W", 
+         RowBox[{"2", ",", "3", ",", "4"}]]}], 
+       SubsuperscriptBox["W", 
+        RowBox[{"1", ",", "2", ",", "3"}], "3"]], "]"}]], "-", 
     SqrtBox[
-     RowBox[{
-      RowBox[{"(", 
-       RowBox[{
-        RowBox[{"-", "1"}], "-", 
-        FractionBox[
-         SubscriptBox["W", 
-          RowBox[{"1", ",", "2", ",", "4"}]], 
-         SubscriptBox["W", 
-          RowBox[{"1", ",", "2", ",", "3"}]]]}], ")"}], " ", 
-      RowBox[{"(", 
-       RowBox[{
-        RowBox[{"-", "1"}], "+", 
-        FractionBox[
-         SubscriptBox["W", 
-          RowBox[{"1", ",", "3", ",", "4"}]], 
-         SubscriptBox["W", 
-          RowBox[{"1", ",", "2", ",", "3"}]]]}], ")"}], " ", 
-      RowBox[{"(", 
-       RowBox[{
-        RowBox[{"-", "1"}], "-", 
-        FractionBox[
-         SubscriptBox["W", 
-          RowBox[{"2", ",", "3", ",", "4"}]], 
-         SubscriptBox["W", 
-          RowBox[{"1", ",", "2", ",", "3"}]]]}], ")"}]}]]}], 
+     RowBox[{"Abs", "[", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"-", "1"}], "-", 
+         FractionBox[
+          SubscriptBox["W", 
+           RowBox[{"1", ",", "2", ",", "4"}]], 
+          SubscriptBox["W", 
+           RowBox[{"1", ",", "2", ",", "3"}]]]}], ")"}], " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", 
+         FractionBox[
+          SubscriptBox["W", 
+           RowBox[{"1", ",", "3", ",", "4"}]], 
+          SubscriptBox["W", 
+           RowBox[{"1", ",", "2", ",", "3"}]]]}], ")"}], " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"-", "1"}], "-", 
+         FractionBox[
+          SubscriptBox["W", 
+           RowBox[{"2", ",", "3", ",", "4"}]], 
+          SubscriptBox["W", 
+           RowBox[{"1", ",", "2", ",", "3"}]]]}], ")"}]}], "]"}]]}], 
    ")"}]}]], "Output",
  CellChangeTimes->{
-  3.6075122831088057`*^9, {3.6075136591278887`*^9, 3.607513673535448*^9}}]
+  3.6075122831088057`*^9, {3.6075136591278887`*^9, 3.607513673535448*^9}, 
+   3.607513858696991*^9}]
 }, Open  ]],
 
 Cell[BoxData[
@@ -429,18 +440,6 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"Part", "::", "pspec"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Part specification \[NoBreak]\\!\\(i\\)\[NoBreak] is \
-neither a machine-sized integer nor a list of machine-sized integers. \
-\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
-ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/pspec\\\", \
-ButtonNote -> \\\"Part::pspec\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.607512327189515*^9, 3.607513676656122*^9}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
    RowBox[{"Part", "::", "partd"}], "MessageName"], 
   RowBox[{
   ":", " "}], "\<\"Part specification \[NoBreak]\\!\\(J \[LeftDoubleBracket] \
@@ -448,7 +447,8 @@ Cell[BoxData[
 \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
 ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partd\\\", \
 ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.607512327189515*^9, 3.607513676697404*^9}],
+ CellChangeTimes->{3.607512327189515*^9, 3.607513676656122*^9, 
+  3.6075138693030663`*^9}],
 
 Cell[BoxData[
  RowBox[{
@@ -460,7 +460,8 @@ Cell[BoxData[
 \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
 ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partd\\\", \
 ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.607512327189515*^9, 3.607513676772398*^9}],
+ CellChangeTimes->{3.607512327189515*^9, 3.607513676656122*^9, 
+  3.6075138693422127`*^9}],
 
 Cell[BoxData[
  RowBox[{
@@ -472,7 +473,8 @@ Cell[BoxData[
 \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
 ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partd\\\", \
 ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.607512327189515*^9, 3.6075136768564043`*^9}],
+ CellChangeTimes->{3.607512327189515*^9, 3.607513676656122*^9, 
+  3.6075138694113827`*^9}],
 
 Cell[BoxData[
  RowBox[{
@@ -485,7 +487,8 @@ calculation. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
 ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
 ButtonData:>\\\"paclet:ref/message/General/stop\\\", ButtonNote -> \
 \\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.607512327189515*^9, 3.607513676858815*^9}]
+ CellChangeTimes->{3.607512327189515*^9, 3.607513676656122*^9, 
+  3.607513869413724*^9}]
 }, Open  ]]
 }, Open  ]],
 
@@ -503,7 +506,7 @@ Cell[BoxData[
 
 Cell[BoxData["\<\"~/Projects/poly-spintergrate/src/find-config.mc\"\>"], \
 "Output",
- CellChangeTimes->{3.607512362809808*^9}]
+ CellChangeTimes->{3.607512362809808*^9, 3.607513871225771*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2022,7 +2025,7 @@ Cell[BoxData[
            RowBox[{"-", "1"}], "+", 
            SubscriptBox["\[Gamma]", "1"]}], ")"}]}]], "\[LessEqual]", "0"}]}],
       ")"}]}]}], "}"}]], "Output",
- CellChangeTimes->{3.6075123655637197`*^9}]
+ CellChangeTimes->{3.6075123655637197`*^9, 3.607513872002494*^9}]
 }, Open  ]],
 
 Cell[BoxData[
@@ -2067,7 +2070,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"Info3607497292-2127091", 67902, 2060}
+ {"Info3607497292-2127091", 67966, 2063}
  }
 *)
 (*NotebookFileOutline
@@ -2097,64 +2100,63 @@ Cell[3197, 101, 1602, 42, 39, "Print",
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[4848, 149, 150, 3, 28, "Input"],
-Cell[5001, 154, 572, 11, 24, "Message"],
-Cell[5576, 167, 578, 11, 24, "Message"],
-Cell[6157, 180, 576, 11, 24, "Message"],
-Cell[6736, 193, 576, 11, 24, "Message"],
-Cell[7315, 206, 601, 12, 24, "Message"]
+Cell[5001, 154, 594, 11, 24, "Message"],
+Cell[5598, 167, 600, 11, 24, "Message"],
+Cell[6201, 180, 600, 11, 24, "Message"],
+Cell[6804, 193, 598, 11, 24, "Message"],
+Cell[7405, 206, 621, 12, 24, "Message"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7965, 224, 97, 1, 44, "Subsection"],
-Cell[8065, 227, 194, 3, 30, "Text"],
+Cell[8075, 224, 97, 1, 44, "Subsection"],
+Cell[8175, 227, 194, 3, 30, "Text"],
 Cell[CellGroupData[{
-Cell[8284, 234, 246, 4, 28, "Input"],
-Cell[8533, 240, 157, 2, 28, "Output"]
+Cell[8394, 234, 246, 4, 28, "Input"],
+Cell[8643, 240, 182, 3, 28, "Output"]
 }, Open  ]],
-Cell[8705, 245, 480, 12, 46, "Input"],
+Cell[8840, 246, 480, 12, 46, "Input"],
 Cell[CellGroupData[{
-Cell[9210, 261, 152, 3, 28, "Input"],
-Cell[9365, 266, 594, 11, 24, "Message"],
-Cell[9962, 279, 598, 11, 24, "Message"],
-Cell[10563, 292, 598, 11, 24, "Message"],
-Cell[11164, 305, 600, 11, 24, "Message"],
-Cell[11767, 318, 621, 12, 24, "Message"]
+Cell[9345, 262, 152, 3, 28, "Input"],
+Cell[9500, 267, 619, 12, 24, "Message"],
+Cell[10122, 281, 623, 12, 24, "Message"],
+Cell[10748, 295, 622, 12, 24, "Message"],
+Cell[11373, 309, 623, 12, 24, "Message"],
+Cell[11999, 323, 646, 13, 24, "Message"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12437, 336, 95, 1, 44, "Subsection"],
+Cell[12694, 342, 95, 1, 44, "Subsection"],
 Cell[CellGroupData[{
-Cell[12557, 341, 190, 3, 28, "Input"],
-Cell[12750, 346, 144, 1, 28, "Output"]
+Cell[12814, 347, 190, 3, 28, "Input"],
+Cell[13007, 352, 169, 2, 28, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12931, 352, 130, 2, 28, "Input"],
-Cell[13064, 356, 1454, 48, 71, "Output"]
+Cell[13213, 359, 130, 2, 28, "Input"],
+Cell[13346, 363, 1614, 52, 112, "Output"]
 }, Open  ]],
-Cell[14533, 407, 408, 11, 28, "Input"],
+Cell[14975, 418, 408, 11, 28, "Input"],
 Cell[CellGroupData[{
-Cell[14966, 422, 199, 4, 28, "Input"],
-Cell[15168, 428, 523, 10, 24, "Message"],
-Cell[15694, 440, 527, 10, 24, "Message"],
-Cell[16224, 452, 527, 10, 24, "Message"],
-Cell[16754, 464, 529, 10, 24, "Message"],
-Cell[17286, 476, 550, 11, 24, "Message"]
+Cell[15408, 433, 199, 4, 28, "Input"],
+Cell[15610, 439, 554, 11, 24, "Message"],
+Cell[16167, 452, 554, 11, 24, "Message"],
+Cell[16724, 465, 554, 11, 24, "Message"],
+Cell[17281, 478, 575, 12, 24, "Message"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17885, 493, 95, 1, 44, "Subsection"],
+Cell[17905, 496, 95, 1, 44, "Subsection"],
 Cell[CellGroupData[{
-Cell[18005, 498, 195, 3, 28, "Input"],
-Cell[18203, 503, 126, 2, 28, "Output"]
+Cell[18025, 501, 195, 3, 28, "Input"],
+Cell[18223, 506, 148, 2, 28, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18366, 510, 153, 2, 28, "Input"],
-Cell[18522, 514, 48481, 1510, 1600, "Output"]
+Cell[18408, 513, 153, 2, 28, "Input"],
+Cell[18564, 517, 48503, 1510, 1600, "Output"]
 }, Open  ]],
-Cell[67018, 2027, 158, 3, 28, "Input"],
+Cell[67082, 2030, 158, 3, 28, "Input"],
 Cell[CellGroupData[{
-Cell[67201, 2034, 122, 2, 28, "Input"],
-Cell[67326, 2038, 194, 5, 28, "Output"]
+Cell[67265, 2037, 122, 2, 28, "Input"],
+Cell[67390, 2041, 194, 5, 28, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
